@@ -1,5 +1,7 @@
 console.log("alright alright alright");
 
+let viz;
+
 // 1. create a variable to store our vizcontainer
 
 const vizBox = document.getElementById("vizContainer");
@@ -20,9 +22,33 @@ const url =
 // 4. define our function to build dashboard
 
 function initViz() {
-  const viz = new tableau.Viz(vizBox, url, options);
+  viz = new tableau.Viz(vizBox, url, options);
 }
 
 // 5. controlling when function is run
 
 document.addEventListener("DOMContentLoaded", initViz);
+
+// 6. adding pdf export button functionality
+
+document.addEventListener("DOMContentLoaded", function () {
+  const exportPdfButton = document.getElementById("exportPdf");
+
+  exportPdfButton.addEventListener("click", exportPdfFunction);
+
+  function exportPdfFunction() {
+    viz.showExportPDFDialog();
+  }
+});
+
+// 7. adding ppt export button functionality
+
+document.addEventListener("DOMContentLoaded", function () {
+  const exportPptButton = document.getElementById("exportPpt");
+
+  exportPptButton.addEventListener("click", exportPptFunction);
+
+  function exportPptFunction() {
+    viz.showExportPowerPointDialog();
+  }
+});
