@@ -52,3 +52,28 @@ document.addEventListener("DOMContentLoaded", function () {
     viz.showExportPowerPointDialog();
   }
 });
+
+// 8. adding min and max value for filter
+
+function getRangeValues() {
+  const minValue = document.getElementById("minValue").value;
+  const maxValue = document.getElementById("maxValue").value;
+  console.log(minValue, maxValue);
+  const workbook = viz.getWorkbook();
+  const activeSheet = workbook.getActiveSheet();
+  const sheets = activeSheet.getWorksheets();
+  // apply filtering
+  const sheetToFilter = sheets[0];
+  sheetToFilter
+    .applyRangeFilterAsync("SUM(Sales)", {
+      min: minValue,
+      max: maxValue,
+    })
+    .then(alert("Viz Filtered 🤑"));
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  const applyFilterButton = document.getElementById("applyFilter");
+
+  applyFilterButton.addEventListener("click", getRangeValues);
+});

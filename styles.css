@@ -1,7 +1,16 @@
 h1 {
   background-color: rgb(217, 164, 94);
+  font-family: sans-serif;
 }
 
 body {
   background-color: floralwhite;
+}
+
+.classbox {
+  height: 30px;
+  background-color: cornflowerblue;
+  font-size: large;
+  font-family: monospace;
+  text-align: center;
 }
